@@ -1,5 +1,10 @@
 const textArea =  document.getElementsByTagName('textarea')[0];
 const preview = document.getElementById('preview')
+const close = document.getElementById('close')
+const open = document.getElementById('open')
+const sidebar = document.getElementById('sidebar')
+const main = document.getElementsByTagName('main')[0]
+const header = document.getElementsByTagName('header')[0]
 let obj = {}
 textArea.addEventListener('keydown', (e)=>{
     if(e.key == 'Enter'){
@@ -39,3 +44,23 @@ textArea.addEventListener('keydown', (e)=>{
         }
     }
 })
+
+
+close.addEventListener('click', (e)=>{
+    const width = sidebar.getBoundingClientRect().width
+    sidebar.style.left = `-${width}px`
+    main.style.marginLeft = 0;
+    header.style.marginLeft = 0
+    close.classList.add('d-none')
+    open.classList.remove('d-none')
+})
+
+open.addEventListener('click', (e)=>{
+    const width = sidebar.getBoundingClientRect().width
+    sidebar.style.left = `0`
+    main.style.marginLeft = `${width}px`;
+    header.style.marginLeft =  `${width}px`
+    open.classList.add('d-none')
+    close.classList.remove('d-none')
+})
+
