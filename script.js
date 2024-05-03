@@ -159,3 +159,7 @@ window.addEventListener("click", (e) => {
     document.body.removeChild(e.target);
   }
 });
+
+if(window.innerWidth <= 700){
+    document.getElementById('savechanges').style.display = 'none'
+}

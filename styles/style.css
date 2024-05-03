@@ -223,3 +223,24 @@ blockquote{
         margin-left: 12vw;
     }
 }
+@media screen and (max-width:600px) {
+    body{
+        overflow-x: hidden;
+    }
+    .sidebar{
+        width: 55%;
+    }
+    main,header{
+        margin-left: 55%;
+    }
+    main{
+        overflow-x: hidden;
+        display: grid;
+    }
+    .markdown{
+        width: 100%;
+    }
+    .ps{
+        padding-right: unset;
+    }
+}
