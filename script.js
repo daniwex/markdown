@@ -1,3 +1,5 @@
+import data from  './data.json' with { type: 'json' };
+
 const textArea = document.getElementsByTagName("textarea")[0];
 const wrapperUpper = document.getElementById("wrapper-upper");
 const preview = document.getElementById("preview");
@@ -30,26 +32,30 @@ saveBtn.addEventListener("click", (e) => {
     if (word != "") {
       let div = document.createElement("div");
       if (word[0] == "#" && word[1] !== "#") {
-        div.style.font = "2.5rem bold";
+        div.style.font = "2.5rem bold Roboto";
         div.style.paddingBottom = "10px";
         div.innerText = word.slice(1);
       } else if (word[0] == "#" && word[1] == "#" && word[2] != "#") {
-        div.style.font = "1.75rem lighter";
+        div.style.font = "1.75rem Roboto lighter";
         div.style.paddingBottom = "10px";
         div.innerText = word.slice(2);
       } else if (word[0] == "#" && word[1] == "#" && word[2] == "#") {
-        div.style.font = "1.5rem lighter";
-        div.style.paddingBottom = "10px";
+        div.style.font = "Roboto 1.5rem  lighter";
+        div.style.padding = "20px 0";
         div.innerText = word.slice(3);
       } else if (/[0-9]/.test(word[0])) {
-        div.style.padding = "0px 30px";
+        div.style.padding = "0px 20px";
         div.innerText = word;
+      } else if (word[0] == '-') {
+        div.style.padding = "0px 30px" ;
+        div.setAttribute('class','bullet')
+        div.innerText = word.slice(1);
       } else if (word.startsWith(">")) {
         let bq = document.createElement("blockquote");
         bq.innerText = word.slice(1);
         div.append(bq);
       } else {
-        div.style.paddingBottom = "10px";
+        div.style.padding = "10px 0";
         div.innerText = word;
       }
       wordsContainer.appendChild(div);
@@ -160,6 +166,12 @@ window.addEventListener("click", (e) => {
   }
 });
 
-if(window.innerWidth <= 700){
-    document.getElementById('savechanges').style.display = 'none'
+if (window.innerWidth <= 700) {
+  document.getElementById("savechanges").style.display = "none";
+}
+
+
+window.onload = ()=>{
+  console.log(data[1].content.split('\n\n'))
+  textArea.innerHTML = data[1].content.split(',').map(el => `${el}`)
 }
