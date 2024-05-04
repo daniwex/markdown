@@ -88,10 +88,10 @@ label[for='check'] span{
 #dark, #white{
     fill: #5A6069;
 }
-#check:not(:checked) ~ #dark{
+#check:not(:checked) ~ #white{
     fill: white ;
 }
-#check:checked ~ #white{
+#check:checked ~ #dark{
     fill: white ;
 }
 header{
@@ -209,6 +209,7 @@ blockquote{
     background-color: var(--lightest-grey);
     border-left: 5px solid #E46643;
     padding: 20px;
+    font-size: .9rem;
 }
 
 @media screen and (min-width:1800px){

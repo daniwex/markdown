@@ -39,18 +39,55 @@ saveBtn.addEventListener("click", (e) => {
         div.style.font = "1.75rem Roboto lighter";
         div.style.paddingBottom = "10px";
         div.innerText = word.slice(2);
-      } else if (word[0] == "#" && word[1] == "#" && word[2] == "#") {
-        div.style.font = "Roboto 1.5rem  lighter";
+      } else if (word[0] == "#" && word[1] == "#" && word[2] == "#" && word[3] != "#") {
+        div.style.font = " 1.5rem Roboto lighter";
         div.style.padding = "20px 0";
         div.innerText = word.slice(3);
-      } else if (/[0-9]/.test(word[0])) {
-        div.style.padding = "0px 20px";
+      }
+      else if (word[0] == "#" && word[1] == "#" && word[2] == "#" && word[3] == "#" && word[4] != '#') {
+        div.style.font = " 1.35rem Roboto lighter";
+        div.style.padding = "20px 0";
+        div.innerText = word.slice(4);
+      } else if (word[0] == "#" && word[1] == "#" && word[2] == "#" && word[3] == "#" && word[4] == '#' && word[5] != '#') {
+        div.style.font = " 1.25rem Roboto lighter";
+        div.style.padding = "20px 0";
+        div.innerText = word.slice(5);
+      }
+      else if (word[0] == "#" && word[1] == "#" && word[2] == "#" && word[3] == "#" && word[4] == '#' && word[5] == '#') {
+        div.style.font = " 1rem Roboto lighter";
+        div.style.padding = "20px 0";
+        div.style.color = '#E46643';
+        div.innerText = word.slice(6);
+      }
+       else if (/[0-9]/.test(word[0])) {
+        div.style.padding = "2px 20px";
+        div.style.font = "300 .95rem Roboto ";
         div.innerText = word;
       } else if (word[0] == '-') {
         div.style.padding = "0px 30px" ;
         div.setAttribute('class','bullet')
         div.innerText = word.slice(1);
-      } else if (word.startsWith(">")) {
+      }
+      // else if (word.includes('`')) {
+      //   let span = document.createElement('span');
+      //   let count = 0
+      //   let m = ''
+      //   for(let i=0;i<word.length;i++){
+      //     if(word[i] == '`' ){
+      //       count++
+      //       m += word[i+1]
+      //     }
+      //     if(count % 2 == 0){
+      //       span.style.fontWeight = 'bolder'
+      //       span.innerText = m
+      //       div.appendChild(span)
+      //       continue
+      //     }
+      //   }
+      //   div.style.padding = "0px 30px" ;
+      //   div.innerText = word.slice(1);
+      // }
+      else if (word.startsWith(">")) {
         let bq = document.createElement("blockquote");
         bq.innerText = word.slice(1);
         div.append(bq);
@@ -172,6 +209,5 @@ if (window.innerWidth <= 700) {
 
 
 window.onload = ()=>{
-  console.log(data[1].content.split('\n\n'))
   textArea.innerHTML = data[1].content.split(',').map(el => `${el}`)
 }
