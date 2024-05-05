@@ -188,6 +188,7 @@ textarea{
 }
 .bullet{
     position: relative;
+    font-size: .85rem;
 }
 .bullet::before{
     position: absolute;

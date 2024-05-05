@@ -60,8 +60,9 @@ saveBtn.addEventListener("click", (e) => {
         div.innerText = word.slice(6);
       }
        else if (/[0-9]/.test(word[0])) {
-        div.style.padding = "2px 20px";
-        div.style.font = "300 .95rem Roboto ";
+        div.style.padding = "1px 20px";
+        div.style.fontFamily = "Roboto";
+        div.style.fontSize = ".85rem";
         div.innerText = word;
       } else if (word[0] == '-') {
         div.style.padding = "0px 30px" ;
@@ -93,6 +94,7 @@ saveBtn.addEventListener("click", (e) => {
         div.append(bq);
       } else {
         div.style.padding = "10px 0";
+        div.style.fontSize = '.95rem';
         div.innerText = word;
       }
       wordsContainer.appendChild(div);
