@@ -215,6 +215,9 @@ blockquote{
     left: 0;
     margin: 10px 0;
 }
+.mobile-preview--1{
+    display: none;
+}
 #checked:not(:checked)  blockquote{
     background-color: red;
 }
@@ -242,11 +245,15 @@ blockquote{
     main{
         overflow-x: hidden;
         display: grid;
+        grid-template-columns: 100% 100%
     }
     .markdown{
-        width: 100%;
+        flex-basis: 100%;
     }
     .ps{
         padding-right: unset;
+    }
+    .mobile-preview--1{
+        display: unset;
     }
 }
