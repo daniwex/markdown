@@ -260,10 +260,7 @@ blockquote{
     .mobile-preview--1{
         display: unset;
     }
-    textarea{
-        min-height: 100%;
-    }
-    #inner-content{
-        min-height: 100vh;
+    .content{
+        height: 100%;
     }
 }
