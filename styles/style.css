@@ -233,6 +233,9 @@ blockquote{
     }
 }
 @media screen and (max-width:600px) {
+    body,html{
+        min-height: 100%;
+    }
     body{
         overflow-x: hidden;
     }
