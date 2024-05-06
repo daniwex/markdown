@@ -91,6 +91,7 @@ label[for='check'] span{
 #check:not(:checked) ~ #white{
     fill: white ;
 }
+
 #check:checked ~ #dark{
     fill: white ;
 }
@@ -214,7 +215,9 @@ blockquote{
     left: 0;
     margin: 10px 0;
 }
-
+#checked:not(:checked)  blockquote{
+    background-color: red;
+}
 @media screen and (min-width:1800px){
     .sidebar{
         width: 12vw;

@@ -17,6 +17,7 @@ const innerContent = document.getElementById("inner-content");
 const checkedStatus = document.getElementById("check");
 const ndoc = document.getElementById("ndoc");
 const con = document.getElementById("content");
+let darkMode = false
 const textMarkDown = Array.from(
   document.getElementsByClassName("text-markdown")
 );
@@ -90,6 +91,8 @@ saveBtn.addEventListener("click", (e) => {
       // }
       else if (word.startsWith(">")) {
         let bq = document.createElement("blockquote");
+        darkMode ? bq.style.background = '#35393F' : bq.style.background = ''
+        bq.style.color = '#000'
         bq.innerText = word.slice(1);
         div.append(bq);
       } else {
@@ -128,7 +131,7 @@ showP.addEventListener("click", () => {
   preview.style.display = "flex";
   preview.style.justifyContent = "center";
   markdown.style.display = "none";
-  innerContent.style.width = "50%";
+  window.innerWidth <= 700 ?   innerContent.style.width = "100%" :   innerContent.style.width = "50%"
 });
 hideP.addEventListener("click", () => {
   hideP.classList.add("d-none");
@@ -188,6 +191,7 @@ checkedStatus.addEventListener("change", (e) => {
       el.style.backgroundColor = "#1d1f22";
       el.style.color = "white";
     });
+    darkMode = false
   } else {
     preview.style.backgroundColor = "#FFF";
     textArea.style.backgroundColor = "#FFF";
@@ -197,6 +201,7 @@ checkedStatus.addEventListener("change", (e) => {
       el.style.backgroundColor = "#F5F5F5";
       el.style.color = "black";
     });
+    darkMode = true
   }
 });
 window.addEventListener("click", (e) => {
@@ -207,6 +212,7 @@ window.addEventListener("click", (e) => {
 
 if (window.innerWidth <= 700) {
   document.getElementById("savechanges").style.display = "none";
+  innerContent.style.width = "100%";
 }
 
 
