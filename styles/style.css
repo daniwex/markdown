@@ -246,7 +246,6 @@ blockquote{
         overflow-x: hidden;
         display: grid;
         grid-template-columns: 100% 100%;
-        background-color: red;
         height: 100%;
     }
     .markdown{
@@ -257,5 +256,11 @@ blockquote{
     }
     .mobile-preview--1{
         display: unset;
+    }
+    textarea{
+        min-height: 100%;
+    }
+    #inner-content{
+        min-height: 100vh;
     }
 }
