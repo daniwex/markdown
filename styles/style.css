@@ -215,9 +215,10 @@ blockquote{
     left: 0;
     margin: 10px 0;
 }
-.mobile-preview--1{
+#showPp{
     display: none;
 }
+
 #checked:not(:checked)  blockquote{
     background-color: red;
 }
@@ -258,9 +259,15 @@ blockquote{
         padding-right: unset;
     }
     .mobile-preview--1{
-        display: unset;
+        display: block;
     }
     .content{
         height: 100%;
+    }
+    #showP{
+        display: none;
+    }
+    #showPp{
+        display: block;
     }
 }

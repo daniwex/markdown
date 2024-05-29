@@ -8,6 +8,7 @@ const open = document.getElementById("open");
 const sidebar = document.getElementById("sidebar");
 const main = document.getElementsByTagName("main")[0];
 const header = document.getElementsByTagName("header")[0];
+const showPp = document.getElementById("showPp");
 const showP = document.getElementById("showP");
 const hideP = document.getElementById("hideP");
 const pmain = document.getElementById("preview-main");
@@ -126,6 +127,15 @@ open.addEventListener("click", (e) => {
 
 showP.addEventListener("click", () => {
   showP.classList.add("d-none");
+  hideP.classList.remove("d-none");
+  pmain.style.flexBasis = "100%";
+  preview.style.display = "flex";
+  preview.style.justifyContent = "center";
+  markdown.style.display = "none";
+  window.innerWidth <= 700 ?   innerContent.style.width = "100%" :   innerContent.style.width = "50%"
+});
+showPp.addEventListener("click", () => {
+  showPp.classList.add("d-none");
   hideP.classList.remove("d-none");
   pmain.style.flexBasis = "100%";
   preview.style.display = "flex";
