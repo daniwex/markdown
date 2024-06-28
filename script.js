@@ -1,5 +1,7 @@
 import data from  './data.json' with { type: 'json' };
 
+let newDocs = []
+let newDocsLi
 const textArea = document.getElementsByTagName("textarea")[0];
 const wrapperUpper = document.getElementById("wrapper-upper");
 const preview = document.getElementById("preview");
@@ -154,22 +156,94 @@ hideP.addEventListener("click", () => {
 });
 
 ndoc.addEventListener("click", () => {
-  let obj = {
-    parentclassName: "parentWrapper",
-    childclassName: "childWrapper",
-  };
-  if (wrapperUpper.children.length == 2) {
-    const ul = document.createElement("ul");
-    wrapperUpper.appendChild(ul);
+ 
+  // create a Modal
+  if(window.innerWidth > 700){
+    let m = document.createElement("div")
+    m.setAttribute('class', 'absClass')
+    let g = document.createElement('div')
+    m.appendChild(g)
+    document.body.appendChild(m)
+
+    let headers = document.createElement('div')
+    let gBody = document.createElement('div')
+    let ndlabel = document.createElement('div')
+    let gp = document.createElement('p')
+    let btn = document.createElement('button')
+
+    btn.setAttribute('class', 'nbtn')
+
+    ndlabel.setAttribute('class','input-container')
+    let label = document.createElement('label')
+    let inputText = document.createElement('input')
+    inputText.setAttribute('type', 'text')
+    inputText.setAttribute('id', 'nd')
+    label.innerText = 'Document name'
+    label.setAttribute('for', 'dname')
+    btn.innerText = 'Create document'
+    // btn.setAttribute('disabled', true)
+    ndlabel.append(label)
+    ndlabel.append(inputText)
+
+    gp.innerHTML = '<span><b>Create a new document </b></span> Input a suitable name that best describes your document'
+    headers.setAttribute('class' , 'cnd---')
+    let h2 = document.createElement('h2')
+    h2.innerText = "New Document"
+    gBody.append(gp)
+    gBody.append(ndlabel)
+    gBody.append(btn)
+    headers.append(h2)
+    g.append(headers)
+    g.append(gBody)
   }
-  if (wrapperUpper.children.length > 2) {
-    const li = document.createElement("li");
-    li.setAttribute("contenteditable", true);
-    li.innerText = "new document";
-    let n = Array.from(wrapperUpper.children);
-    n.find((el) => el.nodeName == "UL").appendChild(li);
-  }
+  const ndb = document.getElementsByClassName('nbtn')[0]
+  const absc = document.getElementsByClassName('absClass')[0]
+  let int = document.getElementById('nd')
+
+
+  ndb.addEventListener('click', () => {
+    if(int.value != ''){
+      let cudate = new Date().toLocaleDateString()
+      let entry = [int.value+ '.md', cudate.replace(/\//g,'-')]
+      newDocs.push(entry)
+      document.body.removeChild(absc)
+    }
+    if(newDocs.length > 0){
+         const li = document.createElement("li");
+         li.setAttribute('class', 'newDocsLi')
+         let span1 = document.createElement('span')
+         let span2 = document.createElement('span')
+        
+         let current = newDocs.shift()
+         span1.innerText = current[0]
+         span2.innerText = current[1]
+
+         li.append(span1)
+         li.append(span2)
+
+         wrapperUpper.appendChild(li);
+
+      }
+      newDocsLi = Array.from(document.getElementsByClassName('newDocsLi'))
+      newDocsLi.forEach(el => el.addEventListener('click', (e) =>{
+        if(e.target.nodeName == "SPAN"){
+          newDocsLi.forEach(el => el.classList.remove('active'))
+          makeActive(e)
+        }
+      }))
+  })
+
 });
+
+
+function makeActive(e){
+  if(!e.target.parentElement.classList.contains('active')){
+    e.target.parentElement.classList += ' active'
+  }
+}
+
+
+
 
 function randomSeq(num) {
   let result = "";
@@ -215,7 +289,7 @@ checkedStatus.addEventListener("change", (e) => {
   }
 });
 window.addEventListener("click", (e) => {
-  if (e.target.className == "parentWrapper") {
+  if (e.target.className == "absClass") {
     document.body.removeChild(e.target);
   }
 });
